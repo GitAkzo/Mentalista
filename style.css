@@ -1,0 +1,191 @@
+/* ==================== DESIGN SYSTEM & VARIÁVEIS ==================== */
+:root {
+    /* Paleta Light (Corpo Claro) */
+    --color-primary: #a855f7;
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
+    
+    /* Variáveis dos painéis/cards */
+    --card-bg: #ffffff;
+    --input-bg: #f1f5f9;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --hover-bg: rgba(0, 0, 0, 0.04);
+    
+    /* Header e Footer Escuros no modo Light */
+    --hf-bg: rgba(30, 41, 59, 0.75);
+    --hf-text: #f3f4f6;
+    --hf-border: rgba(32, 14, 14, 0.08);
+    --hf-hover: rgba(255, 255, 255, 0.1);
+
+    /* Mensagens dinâmicas */
+    --msg-error-bg: #fee2e2;
+    --msg-error-text: #dc2626;
+    --msg-success-bg: #dcfce7;
+    --msg-success-text: #16a34a;
+    --msg-warning-bg: #fef9c3;
+    --msg-warning-text: #ca8a04;
+    
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* Paleta Dark */
+body.dark {
+    /* Paleta Dark (Corpo Escuro) */
+    --bg-color: #111827;
+    --text-color: #f3f4f6;
+    
+    /* Variáveis dos painéis/cards */
+    --card-bg: #1f2937;
+    --input-bg: #374151;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --hover-bg: rgba(255, 255, 255, 0.04);
+
+    /* Header e Footer Claros no modo Dark */
+    --hf-bg: rgba(248, 250, 252, 0.6);
+    --hf-text: #1e293b;
+    --hf-border: rgba(255, 255, 255, 0.15);;
+    --hf-hover: rgba(0, 0, 0, 0.05);
+
+    /* Mensagens dinâmicas */
+    --msg-error-bg: rgba(239, 68, 68, 0.15);
+    --msg-error-text: #fca5a5;
+    --msg-success-bg: rgba(34, 197, 94, 0.15);
+    --msg-success-text: #86efac;
+    --msg-warning-bg: rgba(234, 179, 8, 0.15);
+    --msg-warning-text: #fde047;
+}
+
+/* ==================== RESET & BASE ==================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    padding-top: 70px; 
+}
+
+/* ==================== HEADER ==================== */
+.main-header {
+    position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+    z-index: 1000; background-color: var(--hf-bg); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hf-border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 24px; transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+.header-left a { display: flex; align-items: center; gap: 6px; text-decoration: none; color: var(--hf-text); font-weight: 500; font-size: 0.95rem; transition: color var(--transition-speed); }
+.header-left a:hover { color: var(--color-primary); }
+.header-center ul { list-style: none; display: flex; gap: 24px; }
+.header-center a { text-decoration: none; color: var(--hf-text); font-size: 0.95rem; font-weight: 500; transition: color var(--transition-speed); }
+.header-center a:hover { color: var(--color-primary); }
+.header-right { display: flex; align-items: center; gap: 12px; }
+.icon-btn { background: none; border: none; color: var(--hf-text); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 8px; border-radius: 50%; transition: background-color var(--transition-speed), color var(--transition-speed); }
+.icon-btn:hover { background-color: var(--hf-hover); color: var(--color-primary); }
+.mobile-only { display: none; }
+
+/* ==================== MENU MOBILE ==================== */
+.mobile-menu {
+    position: fixed; top: 70px; left: 0; width: 100%; background-color: var(--hf-bg);
+    border-bottom: 1px solid var(--hf-border); display: flex; flex-direction: column;
+    transform: translateY(-100%); opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    z-index: 999; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.mobile-menu.active { transform: translateY(0); opacity: 1; visibility: visible; }
+.mobile-menu a { padding: 16px 24px; text-decoration: none; color: var(--hf-text); font-weight: 500; border-bottom: 1px solid var(--hf-border); display: block; }
+.mobile-menu a:hover { color: var(--color-primary); background-color: var(--hf-hover); }
+
+/* ==================== CONTEÚDO PRINCIPAL (MAIN) ==================== */
+.app-main { 
+    width: 100%; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 3rem 20px 5rem; 
+    height: 80vh;
+}
+
+.app-title { text-align: center; margin-bottom: 2rem; max-width: 450px; }
+.app-title h1 { font-size: 1.8rem; margin-bottom: 6px; color: var(--color-primary); }
+.app-title p { color: var(--text-color); opacity: 0.7; font-size: 0.9rem; }
+
+/* ==================== MENTALISTA PANEL ==================== */
+.tool-panel {
+    width: 100%; max-width: 450px;
+    background-color: var(--card-bg); border-radius: var(--border-radius); padding: 26px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15); border: 1px solid var(--border-color);
+    display: flex; flex-direction: column; gap: 20px;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.panel-header h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 4px; }
+.panel-header .subtitle { font-size: 0.85rem; opacity: 0.7; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.75rem; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; }
+
+input[type="number"] {
+    background-color: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color);
+    padding: 12px 14px; border-radius: 8px; font-size: 0.95rem; font-family: 'Inter', sans-serif;
+    outline: none; width: 100%; transition: border-color var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+}
+input[type="number"]:focus { border-color: var(--color-primary); }
+
+.action-btn {
+    background-color: var(--color-primary); color: #ffffff; border: none; padding: 14px;
+    border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: filter var(--transition-speed), background-color var(--transition-speed);
+}
+.action-btn:hover:not(:disabled) { filter: brightness(1.1); }
+.action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.secondary-btn {
+    background-color: transparent; color: var(--color-primary);
+    border: 1px solid var(--color-primary); margin-top: -10px;
+}
+.secondary-btn:hover { background-color: rgba(168, 85, 247, 0.1); filter: brightness(1); }
+
+/* Caixa de mensagens do Mentalista */
+.message-box {
+    min-height: 24px; font-weight: 500; font-size: 0.9rem; padding: 0.75rem;
+    border-radius: 6px; text-align: center; transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.message-box:empty { display: none; }
+.message-box.error { color: var(--msg-error-text); background-color: var(--msg-error-bg); border-left: 4px solid var(--msg-error-text); }
+.message-box.success { color: var(--msg-success-text); background-color: var(--msg-success-bg); border-left: 4px solid var(--msg-success-text); }
+.message-box.warning { color: var(--msg-warning-text); background-color: var(--msg-warning-bg); border-left: 4px solid var(--msg-warning-text); }
+
+.hidden { display: none !important; }
+
+/* ==================== FOOTER ==================== */
+.portfolio-footer {
+    background-color: #09062C; color: #ffffff; padding: 4rem 5% 2rem;
+    display: flex; flex-direction: column; align-items: center; width: 100%;
+}
+.footer-contact { text-align: center; max-width: 42rem; margin-bottom: 1.5rem; }
+.footer-contact h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; }
+.footer-contact p { color: #e9d5ff; font-size: 1.125rem; line-height: 1.625; }
+.social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+.social-links a { width: 56px; height: 56px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: background-color 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.social-links a:hover { background-color: var(--color-primary); }
+.footer-divider { width: 100%; max-width: 56rem; height: 1px; background-color: rgba(168, 85, 247, 0.3); margin-bottom: 2rem; }
+.footer-signature { text-align: center; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-signature .copyright { color: #e9d5ff; font-size: 0.875rem; }
+.footer-signature .role { color: #c084fc; font-size: 0.75rem; }
+
+/* ==================== RESPONSIVIDADE ==================== */
+@media (max-width: 768px) {
+    .header-center { display: none; }
+    .mobile-only { display: flex; }
+    .app-main { padding: 2rem 16px 4rem; } 
+}
