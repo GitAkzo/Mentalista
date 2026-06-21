@@ -33,7 +33,8 @@ Este projeto nasceu inspirado em um exercício básico da Imersão Dev da Alura,
 * **HTML5:** Estrutura semântica e atributos de acessibilidade (`inputmode="numeric"`, `aria-labels`).
 * **CSS3:** Variáveis CSS nativas, Flexbox, Media Queries, Sombras dinâmicas e Transições suaves de estado.
 * **JavaScript (ES6+):** Delegação e escuta de Eventos (`addEventListener`), manipulação direta do DOM (`classList`, `textContent`), `Math.random()`, `localStorage` e lógica condicional.
-* **APIs Visuais:** * Google Fonts (Inter, Roboto Mono)
+* **APIs Visuais:**
+  * Google Fonts (Inter, Roboto Mono)
   * Material Symbols (Ícones do Google)
 
 ---
