@@ -1,6 +1,6 @@
 # 🔮 Mentalista
 
-![Preview do Projeto](./Mentalista.png)
+![Preview do Projeto](./Mentalista.webp)
 
 Um jogo clássico de adivinhação lógica onde o usuário tem o desafio de descobrir um número secreto sorteado pela máquina.
 
